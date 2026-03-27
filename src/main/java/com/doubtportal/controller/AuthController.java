@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:5173")
+// Removed hardcoded @CrossOrigin to use global SecurityConfig instead.
 public class AuthController {
 
     @Autowired

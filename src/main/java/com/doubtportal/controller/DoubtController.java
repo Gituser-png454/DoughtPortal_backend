@@ -3,6 +3,7 @@ package com.doubtportal.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import com.doubtportal.entity.Doubt;
 import com.doubtportal.service.DoubtService;
 
@@ -10,14 +11,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/doubts")
-@CrossOrigin(origins = "http://localhost:5173")
 public class DoubtController {
 
     @Autowired
     private DoubtService service;
 
-    @PostMapping
-    public ResponseEntity<Doubt> add(@RequestBody Doubt doubt) {
+    @PostMapping("/post")
+    public ResponseEntity<Doubt> postDoubt(@RequestBody Doubt doubt) {
         return ResponseEntity.ok(service.save(doubt));
     }
 
@@ -28,9 +28,9 @@ public class DoubtController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Doubt> getById(@PathVariable Long id) {
-        Doubt doubt = service.getById(id);
-        if (doubt == null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(doubt);
+        Doubt d = service.getById(id);
+        if (d == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(d);
     }
 
     @DeleteMapping("/{id}")

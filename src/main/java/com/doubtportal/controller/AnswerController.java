@@ -3,6 +3,7 @@ package com.doubtportal.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import com.doubtportal.entity.Answer;
 import com.doubtportal.service.AnswerService;
 
@@ -10,14 +11,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/answers")
-@CrossOrigin(origins = "http://localhost:5173")
 public class AnswerController {
 
     @Autowired
     private AnswerService service;
 
-    @PostMapping
-    public ResponseEntity<Answer> add(@RequestBody Answer answer) {
+    @PostMapping("/post")
+    public ResponseEntity<Answer> postAnswer(@RequestBody Answer answer) {
         return ResponseEntity.ok(service.save(answer));
     }
 
