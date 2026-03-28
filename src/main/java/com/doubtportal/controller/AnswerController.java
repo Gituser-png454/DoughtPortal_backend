@@ -16,7 +16,7 @@ public class AnswerController {
     @Autowired
     private AnswerService service;
 
-    @PostMapping("/post")
+    @PostMapping
     public ResponseEntity<Answer> postAnswer(@RequestBody Answer answer) {
         return ResponseEntity.ok(service.save(answer));
     }

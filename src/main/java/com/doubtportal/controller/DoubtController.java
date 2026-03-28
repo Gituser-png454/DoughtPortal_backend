@@ -16,7 +16,7 @@ public class DoubtController {
     @Autowired
     private DoubtService service;
 
-    @PostMapping("/post")
+    @PostMapping
     public ResponseEntity<Doubt> postDoubt(@RequestBody Doubt doubt) {
         return ResponseEntity.ok(service.save(doubt));
     }
